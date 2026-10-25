@@ -6,7 +6,7 @@ public class BulletShip : MonoBehaviour
     public float speed = 3;
     public GameObject bullet;
 
-    public GameObject Explosion;
+    public GameObject explosion;
 
     public float bulletTimer = 0;
     public float bulletWait = 3;
@@ -28,12 +28,13 @@ public class BulletShip : MonoBehaviour
          } 
     }
 
-private void OnTriggerEnter2D(Collider2D collision)
+private void OnTriggerEnter2D(Collider2D collision) 
     {
-        if(collision.gameObject.CompareTag("PlayerBullet"))
+        if(collision.gameObject.CompareTag("PlayerBullet") || collision.gameObject.CompareTag("GalagaPlayer"))
         {
-            Destroy(collision.gameObject);
-            GameObject temp = Instantiate(Explosion, transform.position, Quaternion.identity);
+            if(collision.gameObject.CompareTag("PlayerBullet"))
+                Destroy(collision.gameObject);
+            GameObject temp = Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(temp, 1.0f);
             Destroy(gameObject);
         }

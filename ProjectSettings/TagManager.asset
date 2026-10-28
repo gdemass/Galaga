@@ -7,6 +7,7 @@ TagManager:
   - PlayerBullet
   - GalagaPlayer
   - Enemy
+  - PowerUp
   layers:
   - Default
   - TransparentFX

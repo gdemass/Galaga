@@ -56,6 +56,23 @@ public class GalagaMovement : MonoBehaviour
             }
             
             lives[lifeCount].enabled = false;
+
+
+        }
+
+//power up effect
+if (collision.gameObject.CompareTag("PowerUp"))
+    {
+        if (lifeCount < lives.Length)
+        {
+            lives[lifeCount].enabled = true;
+            lifeCount += 1;
+            Destroy(collision.gameObject);
         }
     }
+
+        
+    }
+
+    
 }

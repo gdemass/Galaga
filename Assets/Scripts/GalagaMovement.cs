@@ -10,9 +10,11 @@ public class GalagaMovement : MonoBehaviour
 
     public Image[] lives;
     public int lifeCount = 3;
+    bool isDouble = false;
 
     void Update()
     {
+        
       if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             transform.Translate(transform.up * speed * Time.deltaTime);
@@ -42,6 +44,9 @@ public class GalagaMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(bullet, transform.position, Quaternion.identity);
+
+            float offset = isDouble ? 0.7f : 0f;
+            Instantiate(bullet, transform.position + new Vector3(offset, 0, 0), Quaternion.identity);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -63,6 +68,9 @@ public class GalagaMovement : MonoBehaviour
 //power up effect
 if (collision.gameObject.CompareTag("PowerUp"))
     {
+        //makes double bullets
+        isDouble = true;
+
         if (lifeCount < lives.Length)
         {
             lives[lifeCount].enabled = true;

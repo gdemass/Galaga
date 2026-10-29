@@ -10,8 +10,7 @@ public class PowerUp : MonoBehaviour
 
         if (collision.gameObject.CompareTag("GalagaPlayer"))
         {
-            Destroy(gameObject);
-            
+            Destroy(gameObject);  
         }
 
     }
